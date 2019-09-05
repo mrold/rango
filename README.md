@@ -1,6 +1,12 @@
-# 兰戈是一个实用的渐变色设计工具，提供超过400种漂亮的配色方案。
+# 兰戈是一个实用的渐变色设计工具。
 
-我们生活在一个多彩的世界，美丽的渐变色，即使不懂设计，在这里也能找到你喜欢的色彩组合。
+400多种美丽的渐变色，即使不懂设计也能在这里找到喜欢的色彩组合。
+
+![screenshot](https://github.com/mrold/rango/blob/master/src/screenshot.png?raw=true)
+
+## 在线demo
+
+[http://botark.com/projects/rango](http://botark.com/projects/rango)
 
 ## 主要依赖
 
@@ -31,11 +37,6 @@ npm install
 ```
 npm start
 ```
-
-## 在线demo
-
-[http://botark.com/projects/rango](http://botark.com/projects/rango)
-
 
 ## 声明
 
