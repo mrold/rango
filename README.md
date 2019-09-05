@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 兰戈是一个实用的渐变色设计工具，提供超过400种漂亮的配色方案。
 
-## Available Scripts
+我们生活在一个多彩的世界，美丽的渐变色，即使不懂设计，在这里也能找到你喜欢的色彩组合。
 
-In the project directory, you can run:
+## 主要依赖
 
-### `npm start`
+1. create-react-app
+2. react
+3. antd
+4. react-konva
+5. clipboard
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 安装方式
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+克隆项目到本地
 
-### `npm test`
+```
+git clone git@github.com:mrold/rango.git
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cd rango
+```
 
-### `npm run build`
+安装依赖包
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+启动
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm start
+```
 
-### `npm run eject`
+## 在线demo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[http://botark.com/projects/rango](http://botark.com/projects/rango)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 声明
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+本项目参考了[uiGradients](https://github.com/ghosh/uiGradients), 利用了它的配色数据和界面设计。
 
-## Learn More
+## 为什么要做这个项目？
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+偶尔发现了*uiGradients*这个项目，觉得它非常精巧实用，我非常喜欢。
+但是它的代码是基于vue的，而我是react的忠实粉丝。我为何不用react改造一个？于是我利用周末的时间完成了这个小小的项目。
+这个过程并不轻松，因为vue和react有很多不同之处，几乎每个功能都要实现一遍。在此过程中我也学到了很多。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 为什么叫"兰戈"？
 
-### Code Splitting
+"兰戈"是我喜欢电影里的主角的名字，它是一只变色龙。
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

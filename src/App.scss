@@ -18,10 +18,23 @@ body {
   box-sizing: border-box;
   z-index: 4;
   position: relative;
-  justify-content: space-between;
   .brand {
     font-size: 1.2em;
     font-weight: bold;
+    margin-right: 12px;
+  }
+  .nav {
+    .nav-link {
+      font-size: 1.2em;
+      color: #333;
+
+      .anticon {
+        font-size: 1.2em;
+      }
+    }
+    &.right {
+      margin-left: auto;
+    }
   }
 }
 
