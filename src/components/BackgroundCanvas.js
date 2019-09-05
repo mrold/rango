@@ -75,7 +75,7 @@ function generateColorStops(colors) {
   if (len < 2) {
     unit = 1;
   } else {
-    unit = 1/(len - 2);
+    unit = 1/(len - 1);
   }
 
   colors.forEach((c, i) => {
