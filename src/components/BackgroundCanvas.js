@@ -64,8 +64,22 @@ class BackgroundCanvas extends React.Component {
 function generateColorStops(colors) {
   let stops = [];
 
+  // 0 1
+  // 0 0.5 1
+  // 0 0.33 0.66 1
+  // 0 0.25 0.5 0.75 1
+
+  const len = colors.length;
+
+  let unit;
+  if (len < 2) {
+    unit = 1;
+  } else {
+    unit = 1/(len - 2);
+  }
+
   colors.forEach((c, i) => {
-    let position = 0.5;
+    let position = unit * i;
     if (i === 0 ) {
       position = 0;
     }
