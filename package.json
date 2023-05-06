@@ -14,7 +14,7 @@
     "react-dom": "^16.9.0",
     "react-konva": "^16.9.0-0",
     "react-motion": "^0.5.2",
-    "react-scripts": "3.1.1",
+    "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^11.0.2"
   },
   "scripts": {
