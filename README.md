@@ -2,20 +2,20 @@
 
 400多种美丽的渐变色，即使不懂设计也能在这里找到喜欢的色彩组合。
 
-![screenshot](https://github.com/mrold/rango/blob/master/src/screenshot.png?raw=true)
+![screenshot](https://github.com/mrold/rango/blob/master/public/screenshot.png?raw=true)
 
 ## 在线demo
 
-[http://botark.com/projects/rango](http://botark.com/projects/rango)
+[https://botark.com/tools/rango](https://botark.com/tools/rango)
 
 ## 主要依赖
 
-1. create-react-app
+1. vite
 2. react
 3. antd
 4. react-konva
 5. clipboard
-
+6. pnpm
 ## 安装方式
 
 克隆项目到本地
@@ -29,13 +29,13 @@ cd rango
 安装依赖包
 
 ```
-npm install
+pnpm install
 ```
 
 启动
 
 ```
-npm start
+pnpm run dev
 ```
 
 ## 声明
