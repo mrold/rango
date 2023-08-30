@@ -1,12 +1,15 @@
-@import '~antd/dist/antd.css';
 *, ::after, ::before {
   box-sizing: border-box;
 }
-
 body {
+  height: 100%;
   background: #333;
 }
-
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .header {
   background-color: #FFF;
   border-bottom: solid 1px #F3F3F3;
@@ -245,14 +248,14 @@ body {
 .show-view {
   display: block;
   background-color: transparent;
-  height: calc(100vh - 86px);
-  position: absolute;
-  width: 100%;
-  top: 86px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+  flex:1;
+  position:relative;
+  z-index: 0;
+
+  .background-canvas {
+    max-height: 100%;
+    overflow: hidden;
+  }
 
   .show-view-inner {
     position: absolute;

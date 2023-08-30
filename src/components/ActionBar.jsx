@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import ClipboardJS from 'clipboard';
-import {Motion, spring} from 'react-motion';
+import { motion, AnimatePresence } from "framer-motion"
 import {Tooltip} from 'antd';
 
 function ActionBar(props) {
@@ -72,6 +72,10 @@ class CopyAction extends React.Component {
     this.setState({
       showTip: true
     });
+
+    setTimeout(() => {
+      this.hideTip()
+    }, 200)
   };
 
   hideTip = () => {
@@ -93,23 +97,16 @@ class CopyAction extends React.Component {
           <span>{color}</span>
         </span>
         <span className="arrow">→&nbsp;</span>
-
-        {this.state.showTip
-          ? (
-            <Motion defaultStyle={ { y: 0} } style={{y: spring(-30)}}  onRest={this.hideTip}>
-              {({y}) =>
-                <span
-                  className="copied"
-                  style={{
-                    WebkitTransform: `translate3d(0, ${y}px, 0)`,
-                    transform: `translate3d(0, ${y}px, 0)`,
-                  }}
-                >已复制</span> }
-            </Motion>
-          )
-          : null
-        }
-
+        <AnimatePresence>
+          {this.state.showTip && (
+            <motion.span
+              className="copied"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, y: -20 }}
+              exit={{ opacity: 0 }}
+            >已复制</motion.span>
+          )}
+        </AnimatePresence>
       </span>
     );
   }

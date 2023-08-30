@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
+import { StyleProvider } from '@ant-design/cssinjs';
 import hexToHsl from 'hex-to-hsl';
-import './App.scss';
 import gradients from './gradients';
 import Header from './components/Header';
 import ListView from './components/ListView';
@@ -9,7 +9,8 @@ import {FilterBar, FilterGroup, Filter} from "./components/FilterBar";
 import {PaletteList, Palette} from "./components/PaletteList";
 import ShowView from "./components/ShowView";
 import CodeModal from './components/modals/CodeModal';
-import {Icon} from 'antd';
+import './App.scss';
+import {MenuOutlined, ReloadOutlined, CodeOutlined, DownloadOutlined, LeftOutlined, RightOutlined} from '@ant-design/icons'
 
 const filters = [
   { name: 'reds', color: '#cb2d3e' },
@@ -138,65 +139,67 @@ class App extends React.Component {
     const ids = currentFilter === '' ? colorMap['all'] : colorMap[currentFilter];
 
     return (
-      <div className='app'>
-        <Header />
-        <ActionBar>
-          <ActionGroup class="left">
-            <MenuAction icon={<Icon type='menu' style={{ fontWeight: 600}}/>} onClick={this.toggleView} />
-          </ActionGroup>
-          <ActionGroup class="center">
-            {gradient.colors.map((color, i) => {
-              return <CopyAction key={i} color={color} />
-            })}
-          </ActionGroup>
-          <ActionGroup class="right">
-            <Action icon={<Icon type='reload' />} title="调整角度" onClick={this.setDirection} />
-            <Action icon={<Icon type='code' />} title="复制CSS" onClick={this.showCodeModal} />
-            <Action icon={<Icon type='download' />} title="保存为图片" onClick={this.download} />
-          </ActionGroup>
-        </ActionBar>
-        <ListView active={mode==='list'}>
-          <FilterBar>
-            <FilterGroup>
-              {this.state.filters.map((item, i) => {
+      <StyleProvider hashPriority="high">
+        <div className='app'>
+          <Header />
+          <ActionBar>
+            <ActionGroup class="left">
+              <MenuAction icon={<MenuOutlined />} onClick={this.toggleView} />
+            </ActionGroup>
+            <ActionGroup class="center">
+              {gradient.colors.map((color, i) => {
+                return <CopyAction key={i} color={color} />
+              })}
+            </ActionGroup>
+            <ActionGroup class="right">
+              <Action icon={<ReloadOutlined />} title="调整角度" onClick={this.setDirection} />
+              <Action icon={<CodeOutlined />} title="复制CSS" onClick={this.showCodeModal} />
+              <Action icon={<DownloadOutlined />} title="保存为图片" onClick={this.download} />
+            </ActionGroup>
+          </ActionBar>
+          <ListView active={mode==='list'}>
+            <FilterBar>
+              <FilterGroup>
+                {this.state.filters.map((item, i) => {
+                  return (
+                    <Filter
+                      key={i}
+                      bg={item.color}
+                      name={item.name}
+                      onFilter={this.toggleFilter}
+                      active={item.name === this.state.currentFilter}
+                    />
+                  );
+                }, this)}
+              </FilterGroup>
+            </FilterBar>
+            <PaletteList>
+              {ids.map((id, i) => {
                 return (
-                  <Filter
+                  <Palette
                     key={i}
-                    bg={item.color}
-                    name={item.name}
-                    onFilter={this.toggleFilter}
-                    active={item.name === this.state.currentFilter}
+                    gradient={gradients[id]}
+                    direction={direction}
+                    textDirection={textDirection}
+                    onClick={this.selectGradient.bind(this, id)}
                   />
                 );
               }, this)}
-            </FilterGroup>
-          </FilterBar>
-          <PaletteList>
-            {ids.map((id, i) => {
-              return (
-                <Palette
-                  key={i}
-                  gradient={gradients[id]}
-                  direction={direction}
-                  textDirection={textDirection}
-                  onClick={this.selectGradient.bind(this, id)}
-                />
-              );
-            }, this)}
-          </PaletteList>
-        </ListView>
-        <ShowView active={mode==='list'} gradient={gradient} direction={direction}>
-          <h1 className='gradient-name'>{gradient.name}</h1>
-          <div className='paginate prev' onClick={this.prev}><Icon type='left'/></div>
-          <div className='paginate next' onClick={this.next}><Icon type='right' /></div>
-        </ShowView>
-        <CodeModal
-          visible={showCodeModal}
-          gradient={gradient}
-          direction={direction}
-          close={this.closeCodeModal}
-        />
-      </div>
+            </PaletteList>
+          </ListView>
+          <ShowView active={mode==='list'} gradient={gradient} direction={direction}>
+            <h1 className='gradient-name'>{gradient.name}</h1>
+            <div className='paginate prev' onClick={this.prev}><LeftOutlined /></div>
+            <div className='paginate next' onClick={this.next}><RightOutlined /></div>
+          </ShowView>
+          <CodeModal
+            visible={showCodeModal}
+            gradient={gradient}
+            direction={direction}
+            close={this.closeCodeModal}
+          />
+        </div>
+      </StyleProvider>
     );
   }
 }
@@ -244,3 +247,4 @@ function detect (hexColor) {
 }
 
 export default App;
+

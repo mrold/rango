@@ -1,10 +1,10 @@
-import React from 'react';
+import {useEffect, useRef} from 'react';
 import {Stage, Layer, Rect} from 'react-konva';
 // import Konva from 'konva';
 import { saveAs } from 'file-saver';
 
 const width = window.innerWidth;
-const height = window.innerHeight;
+const height = window.innerHeight - 86;
 
 const directionMap = {
   'to right': [{x: 0, y: 0}, {x: width, y: 0}],
@@ -17,34 +17,29 @@ const directionMap = {
   'to top right': [{x: 0, y: height}, {x: width, y: 0}]
 };
 
-class BackgroundCanvas extends React.Component {
-  constructor(props) {
-    super(props);
-    this.stageRef = React.createRef();
-  }
+function BackgroundCanvas(props) {
+  const stageRef = useRef(null)
 
-  componentDidMount() {
-    document.body.addEventListener('download', this.handleDownload)
-  }
+  useEffect(() => {
+    document.body.addEventListener('download', handleDownload)
+    return () => {
+      document.body.removeEventListener('download', handleDownload);
+    }
+  }, []);
 
-  handleDownload = () => {
-    const dataURL = this.stageRef.current.toDataURL({pixelRatio: 3});
+  const handleDownload = () => {
+    const dataURL = stageRef.current.toDataURL({pixelRatio: 3});
 
-    saveAs(dataURL, `${this.props.gradient.name}.png`);
+    saveAs(dataURL, `${props.gradient.name}.png`);
 
     // downloadURI(dataURL, );
   };
 
-  componentWillUnmount() {
-    document.body.removeEventListener('download', this.handleDownload);
-  }
-
-  render() {
-    const {gradient, direction} = this.props;
+    const {gradient, direction} = props;
     const startAndStop = directionMap[direction];
 
     return (
-      <Stage width={width} height={height} ref={this.stageRef} className="background-canvas">
+      <Stage width={width} height={height} ref={stageRef} className="background-canvas">
         <Layer>
           <Rect
             x={0}
@@ -58,7 +53,6 @@ class BackgroundCanvas extends React.Component {
         </Layer>
       </Stage>
     );
-  }
 }
 
 function generateColorStops(colors) {
